@@ -61,6 +61,11 @@ function mudarFocoPorTeclado(evento) {
     else {
       botaoAtual.previousElementSibling.focus();
     }
-
+  }
+  else if (evento.key === "Home") {
+    tablist.firstElementChild.focus();
+  }
+  else if (evento.key === "End") {
+    tablist.lastElementChild.focus();
   }
 }
