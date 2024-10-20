@@ -49,6 +49,7 @@ function mudarFocoPorTeclado(evento) {
 
   switch (evento.key) {
     case "ArrowRight":
+      evento.preventDefault();
       if (botaoAtual === tablist.lastElementChild) {
         novoBotao = tablist.firstElementChild;
       }
@@ -57,6 +58,7 @@ function mudarFocoPorTeclado(evento) {
       }
       break;
     case "ArrowLeft":
+      evento.preventDefault();
       if (botaoAtual === tablist.firstElementChild) {
         novoBotao = tablist.lastElementChild;
       }
@@ -73,4 +75,8 @@ function mudarFocoPorTeclado(evento) {
   }
 
   novoBotao.focus();
+  
+  novoBotao.scrollIntoView({
+    behavior: "smooth"
+  });
 }
