@@ -46,26 +46,28 @@ const tablist = document.querySelector('[role="tablist"]');
 function mudarFocoPorTeclado(evento) {
   const botaoAtual = evento.target;
 
-  if (evento.key === "ArrowRight") {
-    if (botaoAtual === tablist.lastElementChild) {
+  switch (evento.key) {
+    case "ArrowRight":
+      if (botaoAtual === tablist.lastElementChild) {
+        tablist.firstElementChild.focus();
+      }
+      else {
+        botaoAtual.nextElementSibling.focus();
+      }
+      break;
+    case "ArrowLeft":
+      if (botaoAtual === tablist.firstElementChild) {
+        tablist.lastElementChild.focus();
+      }
+      else {
+        botaoAtual.previousElementSibling.focus();
+      }
+      break;
+    case "Home":
       tablist.firstElementChild.focus();
-    }
-    else {
-      botaoAtual.nextElementSibling.focus();
-    }
-  }
-  else if (evento.key === "ArrowLeft") {
-    if (botaoAtual === tablist.firstElementChild) {
+      break;
+    case "End":
       tablist.lastElementChild.focus();
-    }
-    else {
-      botaoAtual.previousElementSibling.focus();
-    }
-  }
-  else if (evento.key === "Home") {
-    tablist.firstElementChild.focus();
-  }
-  else if (evento.key === "End") {
-    tablist.lastElementChild.focus();
+      break;
   }
 }
