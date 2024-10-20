@@ -45,29 +45,32 @@ const tablist = document.querySelector('[role="tablist"]');
 
 function mudarFocoPorTeclado(evento) {
   const botaoAtual = evento.target;
+  let novoBotao;
 
   switch (evento.key) {
     case "ArrowRight":
       if (botaoAtual === tablist.lastElementChild) {
-        tablist.firstElementChild.focus();
+        novoBotao = tablist.firstElementChild;
       }
       else {
-        botaoAtual.nextElementSibling.focus();
+        novoBotao = botaoAtual.nextElementSibling;
       }
       break;
     case "ArrowLeft":
       if (botaoAtual === tablist.firstElementChild) {
-        tablist.lastElementChild.focus();
+        novoBotao = tablist.lastElementChild;
       }
       else {
-        botaoAtual.previousElementSibling.focus();
+        novoBotao = botaoAtual.previousElementSibling;
       }
       break;
     case "Home":
-      tablist.firstElementChild.focus();
+      novoBotao = tablist.firstElementChild;
       break;
     case "End":
-      tablist.lastElementChild.focus();
+      novoBotao = tablist.lastElementChild;
       break;
   }
+
+  novoBotao.focus();
 }
